@@ -8,6 +8,7 @@ const app = express()
 const indexRouter = require("./routers/index")
 const userRouter = require("./routers/user")
 const apiRouter = require("./routers/api")
+const judgeRouter = require("./routers/judge")
 const {connect} = require ("./db/db")
 const { Router } = require('express')
 
@@ -21,6 +22,7 @@ app.use(cors())
 app.use('/', indexRouter)
 app.use('/user',userRouter)
 app.use('/api',apiRouter)
+app.use('/judge',judgeRouter)
 
 connect()
 
