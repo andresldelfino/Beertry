@@ -2,7 +2,6 @@ const express = require("express")
 const router = express.Router()
 const judgeController = require("../controllers/judgeController")
 const { validateJugde } = require("../middleware/validateJudge")
-const { checkJudgeData } = require("../middleware/checkJudgeData")
 const { check } = require("express-validator")
 
 

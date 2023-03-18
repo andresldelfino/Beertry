@@ -1,4 +1,5 @@
 const {Judges} = require("../models/judge")
+const {SampleTries} = require("../models/sampleTry")
 const {validationResult} = require("express-validator")
 
 module.exports = {
@@ -36,7 +37,13 @@ module.exports = {
         res.status(200).json(req.body)
     },
     async deleteJudge(req, res){
-        const judge = await Judges.findByIdAndDelete(req.params.id)
-        res.status(200).json({msg: "Juez eliminado", judge})
+        const sampleTries = await SampleTries.findOne({judge: req.params.id})
+        if (sampleTries == null) {
+            const judge = await Judges.findByIdAndDelete(req.params.id)
+            res.status(200).json({msg: "Juez eliminado", judge})       
+        } else {
+            res.status(200).json({msg: "No se puede eliminar el Juez ya que tiene Evaluaciones realizadas"})    
+        }        
+        
     }
 }
