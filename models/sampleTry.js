@@ -1,28 +1,36 @@
 const mongoose = require("mongoose")
 
 const Schema = mongoose.Schema
-const sample = new Schema({
-    mail:{
+const sampleTry = new Schema({
+    sample:{
         type: String,
         required: true
     },
-    name:{
+    judge:{
         type: String,
-        required: true,
+        required: true
     },
-    style:{
-        type: String,
+    turbidity:{
+        type: Number,
         required: true
     },
     srm:{
         type: Number,
         required: true
     },
-    abv:{
+    foam:{
         type: Number,
         required: true
     },
-    category:{
+    retention:{
+        type: Number,
+        required: true
+    },
+    balance:{
+        type: Number,
+        required: true
+    },
+    body:{
         type: Number,
         required: true
     },
@@ -31,5 +39,5 @@ const sample = new Schema({
     }
 })
 
-const Samples = mongoose.model('Sample',sample)
-module.exports = {Samples}
+const SampleTries = mongoose.model('SampleTry',sampleTry)
+module.exports = {SampleTries}

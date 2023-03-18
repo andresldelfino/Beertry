@@ -1,4 +1,5 @@
 const {Samples} = require("../models/sample")
+const {SampleTries} = require("../models/sampleTry")
 const {validationResult} = require("express-validator")
 
 module.exports = {
@@ -32,7 +33,8 @@ module.exports = {
         res.status(200).json(req.body)
     },
     async deleteSample(req, res){
+        const sampleTry = await SampleTries.remove({sample: req.params.id})
         const sample = await Samples.findByIdAndDelete(req.params.id)
-        res.status(200).json({msg: "Muestra eliminada", judge})
+        res.status(200).json({msg: "La Muestra y todas sus Evaluaciones fueron eliminadas", sample})
     }
 }
